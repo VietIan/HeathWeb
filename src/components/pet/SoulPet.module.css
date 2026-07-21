@@ -1,0 +1,314 @@
+.petContainer {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-lg);
+    text-align: center;
+}
+
+.petHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.petHeader h3 {
+    font-size: var(--font-size-md);
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.levelBadge {
+    padding: 4px 12px;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    color: #1A1612;
+}
+
+/* Pet Avatar */
+.petAvatar {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.petBody {
+    position: relative;
+}
+
+/* Level 1: Egg */
+.egg {
+    position: relative;
+}
+
+.eggCrack {
+    font-size: 64px;
+    display: block;
+    animation: wobble 2s ease-in-out infinite;
+}
+
+@keyframes wobble {
+
+    0%,
+    100% {
+        transform: rotate(-3deg);
+    }
+
+    50% {
+        transform: rotate(3deg);
+    }
+}
+
+.eggShine {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    animation: shine 1.5s ease-in-out infinite;
+}
+
+@keyframes shine {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Level 2: Ghost */
+.ghost {
+    position: relative;
+}
+
+.ghostBody {
+    font-size: 64px;
+    display: block;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.petBody.level2.excited .ghostBody {
+    animation: bounce 0.5s ease-in-out infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-15px) scale(1.1);
+    }
+}
+
+.petBody.level2.sad .ghostBody,
+.petBody.level2.very_sad .ghostBody {
+    animation: droop 2s ease-in-out infinite;
+}
+
+@keyframes droop {
+
+    0%,
+    100% {
+        transform: translateY(5px) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateY(8px) rotate(5deg);
+    }
+}
+
+/* Level 3: Phoenix */
+.phoenix {
+    position: relative;
+}
+
+.phoenixBody {
+    font-size: 72px;
+    display: block;
+    animation: flame 1s ease-in-out infinite;
+}
+
+@keyframes flame {
+
+    0%,
+    100% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+        filter: brightness(1.2);
+    }
+}
+
+.phoenixGlow {
+    position: absolute;
+    inset: -20px;
+    background: radial-gradient(circle, rgba(255, 100, 0, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+/* Pet Info */
+.petInfo h4 {
+    font-size: var(--font-size-md);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.petInfo p {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* Happiness Bar */
+.happinessBar {
+    margin: var(--spacing-lg) 0;
+}
+
+.happinessLabel {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-size-xs);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.happinessTrack {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.happinessFill {
+    height: 100%;
+    border-radius: var(--radius-full);
+    transition: all 0.5s ease;
+}
+
+/* Stats */
+.petStats {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+}
+
+/* Feed Button */
+.feedBtn {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: linear-gradient(135deg, #4ADE80, #22C55E);
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: #1A1612;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.feedBtn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(74, 222, 128, 0.3);
+}
+
+.feedBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Evolution Hint */
+.evolutionHint {
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-sm);
+    background: rgba(250, 204, 21, 0.1);
+    border: 1px solid rgba(250, 204, 21, 0.2);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.evolutionHint p {
+    font-size: var(--font-size-xs);
+    color: #FACC15;
+    margin: 0;
+}
+
+/* Compact Version */
+.compactPet {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.compactEmoji {
+    font-size: 24px;
+}
+
+.compactBar {
+    flex: 1;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.compactFill {
+    height: 100%;
+    border-radius: var(--radius-full);
+    transition: all 0.3s ease;
+}

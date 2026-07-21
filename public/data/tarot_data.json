@@ -1,0 +1,178 @@
+[
+    {
+        "id": 0,
+        "name": "The Fool",
+        "name_vi": "Kẻ Khờ",
+        "meaning_upright": "Khởi đầu mới, sự hồn nhiên, tự do, phiêu lưu",
+        "meaning_reversed": "Liều lĩnh, thiếu suy nghĩ, mạo hiểm vô ích",
+        "image": "🃏"
+    },
+    {
+        "id": 1,
+        "name": "The Magician",
+        "name_vi": "Nhà Ảo Thuật",
+        "meaning_upright": "Sáng tạo, kỹ năng, ý chí mạnh mẽ, nguồn lực dồi dào",
+        "meaning_reversed": "Thao túng, lừa dối, thiếu tập trung",
+        "image": "🎩"
+    },
+    {
+        "id": 2,
+        "name": "The High Priestess",
+        "name_vi": "Nữ Tư Tế",
+        "meaning_upright": "Trực giác, bí ẩn, tiềm thức, sự thông thái",
+        "meaning_reversed": "Bí mật, xa rời trực giác, che giấu cảm xúc",
+        "image": "🌙"
+    },
+    {
+        "id": 3,
+        "name": "The Empress",
+        "name_vi": "Nữ Hoàng",
+        "meaning_upright": "Sự phong phú, nuôi dưỡng, thiên nhiên, sáng tạo",
+        "meaning_reversed": "Phụ thuộc, thiếu phát triển, sáng tạo bị chặn",
+        "image": "👑"
+    },
+    {
+        "id": 4,
+        "name": "The Emperor",
+        "name_vi": "Hoàng Đế",
+        "meaning_upright": "Quyền lực, cấu trúc, kiểm soát, hình mẫu cha",
+        "meaning_reversed": "Độc đoán, cứng nhắc, thiếu kỷ luật",
+        "image": "🦁"
+    },
+    {
+        "id": 5,
+        "name": "The Hierophant",
+        "name_vi": "Giáo Hoàng",
+        "meaning_upright": "Truyền thống, đức tin, đạo đức, sự hướng dẫn",
+        "meaning_reversed": "Nổi loạn, phá vỡ quy tắc, thách thức truyền thống",
+        "image": "⛪"
+    },
+    {
+        "id": 6,
+        "name": "The Lovers",
+        "name_vi": "Người Yêu",
+        "meaning_upright": "Tình yêu, hài hòa, sự lựa chọn, hợp nhất",
+        "meaning_reversed": "Mất cân bằng, bất hòa, lựa chọn sai lầm",
+        "image": "💑"
+    },
+    {
+        "id": 7,
+        "name": "The Chariot",
+        "name_vi": "Cỗ Xe",
+        "meaning_upright": "Chiến thắng, ý chí, quyết tâm, kiểm soát",
+        "meaning_reversed": "Thiếu phương hướng, hung hăng, mất kiểm soát",
+        "image": "🏎️"
+    },
+    {
+        "id": 8,
+        "name": "Strength",
+        "name_vi": "Sức Mạnh",
+        "meaning_upright": "Lòng dũng cảm, kiên nhẫn, sức mạnh nội tại",
+        "meaning_reversed": "Tự nghi ngờ, yếu đuối, thiếu tự tin",
+        "image": "🦋"
+    },
+    {
+        "id": 9,
+        "name": "The Hermit",
+        "name_vi": "Ẩn Sĩ",
+        "meaning_upright": "Tìm kiếm nội tâm, suy ngẫm, cô độc khôn ngoan",
+        "meaning_reversed": "Cô lập, cô đơn, rút lui quá mức",
+        "image": "🏔️"
+    },
+    {
+        "id": 10,
+        "name": "Wheel of Fortune",
+        "name_vi": "Vòng Xoay Số Phận",
+        "meaning_upright": "Vận may, chu kỳ, định mệnh, thay đổi",
+        "meaning_reversed": "Xui xẻo, kháng cự thay đổi, mất kiểm soát",
+        "image": "🎡"
+    },
+    {
+        "id": 11,
+        "name": "Justice",
+        "name_vi": "Công Lý",
+        "meaning_upright": "Công bằng, sự thật, nhân quả, trách nhiệm",
+        "meaning_reversed": "Bất công, thiên vị, từ chối trách nhiệm",
+        "image": "⚖️"
+    },
+    {
+        "id": 12,
+        "name": "The Hanged Man",
+        "name_vi": "Người Bị Treo",
+        "meaning_upright": "Hy sinh, buông bỏ, góc nhìn mới, tạm dừng",
+        "meaning_reversed": "Trì hoãn, kháng cự, bế tắc",
+        "image": "🙃"
+    },
+    {
+        "id": 13,
+        "name": "Death",
+        "name_vi": "Tử Thần",
+        "meaning_upright": "Kết thúc, chuyển đổi, buông bỏ, thay đổi lớn",
+        "meaning_reversed": "Kháng cự thay đổi, không buông bỏ được",
+        "image": "🦋"
+    },
+    {
+        "id": 14,
+        "name": "Temperance",
+        "name_vi": "Điều Độ",
+        "meaning_upright": "Cân bằng, kiên nhẫn, điều hòa, mục đích",
+        "meaning_reversed": "Mất cân bằng, thái quá, thiếu tầm nhìn",
+        "image": "☯️"
+    },
+    {
+        "id": 15,
+        "name": "The Devil",
+        "name_vi": "Ác Quỷ",
+        "meaning_upright": "Bóng tối, nghiện ngập, ràng buộc, dục vọng",
+        "meaning_reversed": "Giải phóng, vượt qua cám dỗ, tự do",
+        "image": "😈"
+    },
+    {
+        "id": 16,
+        "name": "The Tower",
+        "name_vi": "Tòa Tháp",
+        "meaning_upright": "Biến động, sụp đổ, thức tỉnh đột ngột",
+        "meaning_reversed": "Trì hoãn thảm họa, sợ thay đổi",
+        "image": "⚡"
+    },
+    {
+        "id": 17,
+        "name": "The Star",
+        "name_vi": "Ngôi Sao",
+        "meaning_upright": "Hy vọng, niềm tin, sự thanh lọc, cảm hứng",
+        "meaning_reversed": "Tuyệt vọng, mất niềm tin, xa rời tâm linh",
+        "image": "⭐"
+    },
+    {
+        "id": 18,
+        "name": "The Moon",
+        "name_vi": "Mặt Trăng",
+        "meaning_upright": "Ảo tưởng, nỗi sợ, tiềm thức, trực giác",
+        "meaning_reversed": "Sự thật được tiết lộ, vượt qua nỗi sợ",
+        "image": "🌕"
+    },
+    {
+        "id": 19,
+        "name": "The Sun",
+        "name_vi": "Mặt Trời",
+        "meaning_upright": "Niềm vui, thành công, lạc quan, sinh lực",
+        "meaning_reversed": "Tiêu cực tạm thời, thiếu rõ ràng",
+        "image": "☀️"
+    },
+    {
+        "id": 20,
+        "name": "Judgement",
+        "name_vi": "Phán Xét",
+        "meaning_upright": "Phán xét, tái sinh, tiếng gọi nội tâm",
+        "meaning_reversed": "Tự nghi ngờ, từ chối tiếng gọi, tự phê phán",
+        "image": "📯"
+    },
+    {
+        "id": 21,
+        "name": "The World",
+        "name_vi": "Thế Giới",
+        "meaning_upright": "Hoàn thành, tích hợp, thành tựu, du hành",
+        "meaning_reversed": "Chưa hoàn thành, thiếu kết thúc",
+        "image": "🌍"
+    }
+]

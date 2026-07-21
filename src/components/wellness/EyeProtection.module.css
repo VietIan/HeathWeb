@@ -1,0 +1,158 @@
+.reminderToast {
+    position: fixed;
+    bottom: var(--spacing-lg);
+    right: var(--spacing-lg);
+    z-index: 9998;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.toastContent {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.95) 0%, rgba(37, 99, 235, 0.95) 100%);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
+    max-width: 400px;
+}
+
+.iconWrapper {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-md);
+    color: white;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.textContent {
+    flex: 1;
+}
+
+.textContent h4 {
+    margin: 0 0 var(--spacing-xs) 0;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: white;
+}
+
+.textContent p {
+    margin: 0;
+    font-size: var(--font-size-xs);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.countdownText {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.countdown {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: white;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.startBtn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: white;
+    border: none;
+    border-radius: var(--radius-md);
+    color: #3B82F6;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.startBtn:hover {
+    transform: scale(1.05);
+}
+
+.dismissBtn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: var(--radius-sm);
+    color: white;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.dismissBtn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.progressRing {
+    width: 40px;
+    height: 40px;
+}
+
+.progressRing svg {
+    transform: rotate(-90deg);
+}
+
+.progressBg {
+    stroke: rgba(255, 255, 255, 0.3);
+}
+
+.progressFill {
+    stroke: white;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .reminderToast {
+        left: var(--spacing-md);
+        right: var(--spacing-md);
+        bottom: var(--spacing-md);
+    }
+
+    .toastContent {
+        max-width: none;
+    }
+}

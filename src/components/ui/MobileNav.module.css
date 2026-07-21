@@ -1,0 +1,81 @@
+/* ============================================
+   Mobile Bottom Navigation Bar
+   Only visible on mobile/tablet (< 768px)
+   ============================================ */
+
+.mobileNav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(26, 22, 18, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 6px 0;
+    padding-bottom: max(6px, env(safe-area-inset-bottom));
+}
+
+.navItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    padding: 8px 4px;
+    text-decoration: none;
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+    position: relative;
+    border-radius: var(--radius-md);
+    flex: 1;
+}
+
+.navItem::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: var(--gradient-primary);
+    border-radius: 0 0 3px 3px;
+    transition: width 0.3s ease;
+}
+
+.navItemActive {
+    color: var(--color-primary);
+}
+
+.navItemActive::before {
+    width: 24px;
+}
+
+.navIcon {
+    font-size: 1.4rem;
+    line-height: 1;
+    transition: transform 0.2s ease;
+}
+
+.navItemActive .navIcon {
+    transform: scale(1.15);
+}
+
+.navLabel {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+/* Show only on mobile */
+@media (max-width: 768px) {
+    .mobileNav {
+        display: flex;
+        justify-content: space-around;
+        align-items: stretch;
+    }
+}

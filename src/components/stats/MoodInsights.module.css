@@ -1,0 +1,184 @@
+.insightsContainer {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+}
+
+.title {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-primary);
+}
+
+.emptyState {
+    text-align: center;
+    padding: var(--spacing-xl);
+}
+
+.emptyIcon {
+    font-size: 48px;
+    display: block;
+    margin-bottom: var(--spacing-md);
+}
+
+.emptyState p {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.emptyHint {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+}
+
+/* Day Chart */
+.dayChart {
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.dayChart h4 {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+}
+
+.dayBars {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 120px;
+    gap: var(--spacing-sm);
+}
+
+.dayBar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.barWrapper {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.bar {
+    width: 80%;
+    background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    min-height: 4px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.bar:hover {
+    opacity: 0.8;
+    transform: scaleY(1.05);
+}
+
+.barBest {
+    background: linear-gradient(180deg, #4ADE80 0%, #22C55E 100%);
+    box-shadow: 0 0 10px rgba(74, 222, 128, 0.4);
+}
+
+.barWorst {
+    background: linear-gradient(180deg, #F87171 0%, #EF4444 100%);
+}
+
+.barValue {
+    font-size: var(--font-size-xs);
+    color: white;
+    font-weight: 600;
+    margin-top: 4px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.dayLabel {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+    margin-top: var(--spacing-xs);
+}
+
+/* Insights List */
+.insightsList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.insightCard {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    border-left: 3px solid var(--color-primary);
+}
+
+.insightCard.insightpositive {
+    border-left-color: #4ADE80;
+    background: rgba(74, 222, 128, 0.05);
+}
+
+.insightCard.insightwarning {
+    border-left-color: #FBBF24;
+    background: rgba(251, 191, 36, 0.05);
+}
+
+.insightCard.insightachievement {
+    border-left-color: #A78BFA;
+    background: rgba(167, 139, 250, 0.05);
+}
+
+.insightCard.insightpattern {
+    border-left-color: #60A5FA;
+    background: rgba(96, 165, 250, 0.05);
+}
+
+.insightCard.insightproductivity {
+    border-left-color: #F97316;
+    background: rgba(249, 115, 22, 0.05);
+}
+
+.insightCard.insightlifestyle {
+    border-left-color: #22D3EE;
+    background: rgba(34, 211, 238, 0.05);
+}
+
+.insightHeader {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.insightIcon {
+    font-size: 20px;
+}
+
+.insightHeader h4 {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.insightMessage {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.insightTip {
+    font-size: var(--font-size-xs);
+    color: var(--color-primary);
+    margin-top: var(--spacing-sm);
+    font-style: italic;
+}

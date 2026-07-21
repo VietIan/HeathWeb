@@ -1,0 +1,319 @@
+.statsPage {
+    max-width: 1000px;
+}
+
+.pageHeader {
+    margin-bottom: var(--spacing-xl);
+}
+
+.pageHeader h1 {
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--spacing-sm);
+}
+
+.pageHeader p {
+    color: var(--text-secondary);
+}
+
+/* Score Section */
+.scoreSection {
+    margin-bottom: var(--spacing-xl);
+}
+
+.scoreCard {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2xl);
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-2xl);
+}
+
+@media (max-width: 640px) {
+    .scoreCard {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+.scoreRing {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: conic-gradient(var(--color) calc(var(--score) * 1%),
+            rgba(255, 255, 255, 0.1) calc(var(--score) * 1%));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scoreInner {
+    width: 130px;
+    height: 130px;
+    background: var(--bg-secondary);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.scoreValue {
+    font-size: var(--font-size-4xl);
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+.scoreLabel {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+}
+
+.scoreInfo h2 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-sm);
+}
+
+.scoreGrade {
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-full);
+    font-weight: 700;
+    font-size: var(--font-size-lg);
+    color: #1a1a1a;
+    margin-bottom: var(--spacing-sm);
+}
+
+.scoreInfo p {
+    color: var(--text-secondary);
+}
+
+/* Quick Stats */
+.quickStats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+@media (max-width: 900px) {
+    .quickStats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .quickStats {
+        grid-template-columns: 1fr;
+    }
+}
+
+.statCard {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+}
+
+.statIcon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    color: white;
+    flex-shrink: 0;
+}
+
+.statContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.statValue {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+.statLabel {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+}
+
+/* Mood Chart */
+.chartSection {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+}
+
+.chartSection h2 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.moodChart {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.moodBar {
+    display: grid;
+    grid-template-columns: 140px 1fr 50px;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+@media (max-width: 480px) {
+    .moodBar {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xs);
+    }
+}
+
+.moodBarHeader {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.moodEmoji {
+    font-size: 1.25rem;
+}
+
+.moodName {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+.moodCount {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    margin-left: auto;
+}
+
+.barContainer {
+    height: 24px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.barFill {
+    height: 100%;
+    border-radius: var(--radius-full);
+    transition: width 0.5s ease;
+    min-width: 4px;
+}
+
+.moodPercent {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-muted);
+    text-align: right;
+}
+
+/* Insights */
+.insightsSection h2 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.insightsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+}
+
+@media (max-width: 900px) {
+    .insightsGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.insightCard {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+}
+
+.insightIcon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-calm);
+    border-radius: var(--radius-md);
+    color: white;
+    margin-bottom: var(--spacing-md);
+}
+
+.insightCard h3 {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-sm);
+}
+
+.insightCard p {
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+}
+
+.insightCard strong {
+    color: var(--text-primary);
+}
+/* Heatmap Section */
+.heatmapSection {
+    position: relative;
+    margin-bottom: var(--spacing-xl);
+}
+
+.heatmapNav {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    display: flex;
+    gap: var(--spacing-xs);
+    z-index: 1;
+}
+
+.navBtn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.navBtn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--text-primary);
+}
+
+/* Insights Section */
+.insightsSection {
+    margin-bottom: var(--spacing-xl);
+}

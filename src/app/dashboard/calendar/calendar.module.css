@@ -1,0 +1,505 @@
+.calendarPage {
+    max-width: 1100px;
+}
+
+.pageHeader {
+    margin-bottom: var(--spacing-xl);
+}
+
+.pageHeader h1 {
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--spacing-sm);
+}
+
+.pageHeader p {
+    color: var(--text-secondary);
+}
+
+/* Calendar Container */
+.calendarContainer {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: var(--spacing-lg);
+}
+
+@media (max-width: 900px) {
+    .calendarContainer {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Calendar */
+.calendar {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+}
+
+.calendarHeader {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.calendarHeader h2 {
+    flex: 1;
+    font-size: var(--font-size-xl);
+    text-transform: capitalize;
+}
+
+.navBtn {
+    padding: var(--spacing-sm);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.navBtn:hover {
+    background: var(--glass-bg-hover);
+}
+
+.todayBtn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.todayBtn:hover {
+    background: var(--glass-bg-hover);
+    color: var(--text-primary);
+}
+
+/* Week Days */
+.weekDays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    margin-bottom: var(--spacing-sm);
+}
+
+.weekDay {
+    text-align: center;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-muted);
+    padding: var(--spacing-sm);
+}
+
+/* Days Grid */
+.daysGrid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.dayEmpty {
+    aspect-ratio: 1;
+}
+
+.day {
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.day:hover {
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
+}
+
+.day.today {
+    border-color: var(--color-primary);
+    background: rgba(255, 122, 69, 0.15);
+}
+
+.day.selected {
+    background: var(--gradient-primary);
+    border-color: transparent;
+}
+
+.day.selected .dayNumber {
+    color: white;
+}
+
+.dayNumber {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.eventDots {
+    display: flex;
+    gap: 3px;
+}
+
+.eventDot {
+    width: 5px;
+    height: 5px;
+    border-radius: var(--radius-full);
+}
+
+/* Day Panel */
+.dayPanel {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    height: fit-content;
+}
+
+.dayPanelHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-lg);
+    gap: var(--spacing-sm);
+}
+
+.dayPanelHeader h3 {
+    font-size: var(--font-size-base);
+    text-transform: capitalize;
+}
+
+.btn-sm {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-xs);
+}
+
+.eventList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.noEvents {
+    text-align: center;
+    padding: var(--spacing-xl);
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+}
+
+.eventCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-md);
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid;
+    border-radius: var(--radius-md);
+}
+
+.eventInfo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.eventEmoji {
+    font-size: 1.25rem;
+}
+
+.eventTitle {
+    display: block;
+    font-weight: 500;
+    font-size: var(--font-size-sm);
+}
+
+.eventType {
+    display: block;
+    font-size: var(--font-size-xs);
+}
+
+.deleteBtn {
+    padding: var(--spacing-xs);
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    opacity: 0;
+    transition: all var(--transition-fast);
+}
+
+.eventCard:hover .deleteBtn {
+    opacity: 1;
+}
+
+.deleteBtn:hover {
+    color: var(--color-error);
+}
+
+/* Modal */
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: var(--spacing-lg);
+}
+
+.modal {
+    background: var(--bg-secondary);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    width: 100%;
+    max-width: 420px;
+    animation: slideUp 0.3s ease-out;
+}
+
+.modalHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.modalHeader h3 {
+    font-size: var(--font-size-lg);
+}
+
+.closeBtn {
+    padding: var(--spacing-xs);
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.closeBtn:hover {
+    color: var(--text-primary);
+}
+
+.modal form {
+    padding: var(--spacing-lg);
+}
+
+.formGroup {
+    margin-bottom: var(--spacing-lg);
+}
+
+.formGroup label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.typeSelector {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+}
+
+.typeBtn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background: rgba(255, 255, 255, 0.03);
+    border: 2px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.typeBtn:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.typeBtn.selected {
+    border-color: var(--type-color);
+    color: var(--type-color);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.modalActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--glass-border);
+}
+
+/* Checkbox Group */
+.checkboxGroup {
+    margin-bottom: var(--spacing-lg);
+}
+
+.checkboxLabel {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    color: var(--text-primary);
+}
+
+.checkboxLabel input[type=checkbox] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-primary);
+    cursor: pointer;
+}
+
+.checkboxHint {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+    margin-top: var(--spacing-xs);
+    margin-left: 26px;
+}
+
+
+/* Holiday Card */
+.holidayCard {
+    background: rgba(248, 113, 113, 0.08);
+}
+
+.countdownBadge {
+    margin-left: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+}
+
+/* Lunar Calendar Styles */
+.lunarToggle {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.lunarToggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.lunarToggle.lunarActive {
+    background: linear-gradient(135deg, #A78BFA 0%, #818CF8 100%);
+    color: white;
+    border-color: transparent;
+}
+
+.monthInfo {
+    text-align: center;
+}
+
+.lunarMonth {
+    font-size: var(--font-size-xs);
+    color: #A78BFA;
+    display: block;
+    margin-top: 2px;
+}
+
+.lunarDay {
+    font-size: 10px;
+    color: var(--text-muted);
+    display: block;
+    margin-top: 2px;
+}
+
+.lunarDay.lunarSpecial {
+    color: #FFD700;
+}
+
+.specialDay {
+    background: rgba(167, 139, 250, 0.1) !important;
+}
+
+.lunarInfo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-xs);
+}
+
+.lunarDate {
+    font-size: var(--font-size-sm);
+    color: #A78BFA;
+}
+
+.lunarSpecialBadge {
+    font-size: var(--font-size-xs);
+    padding: 2px 8px;
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #1A1612;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+}
+
+.tietKhiBadge {
+    font-size: var(--font-size-xs);
+    padding: 2px 8px;
+    background: rgba(74, 222, 128, 0.2);
+    color: #4ADE80;
+    border-radius: var(--radius-full);
+}
+
+/* Upcoming Holidays */
+.upcomingHolidays {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.upcomingHolidays h4 {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.holidaysList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.holidayChip {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+}
+
+.daysUntil {
+    font-size: var(--font-size-xs);
+    color: var(--color-primary);
+    font-weight: 600;
+}

@@ -1,0 +1,338 @@
+.attendancePage {
+    max-width: 900px;
+}
+
+.pageHeader {
+    margin-bottom: var(--spacing-xl);
+}
+
+.pageHeader h1 {
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--spacing-sm);
+}
+
+.pageHeader p {
+    color: var(--text-secondary);
+}
+
+/* Check-in Section */
+.checkInSection {
+    margin-bottom: var(--spacing-xl);
+}
+
+.checkInCard {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-2xl);
+    text-align: center;
+}
+
+.checkInIcon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-xl);
+    color: white;
+}
+
+.checkInCard h2 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-lg);
+    text-transform: capitalize;
+}
+
+.checkedIn,
+.notCheckedIn {
+    margin-bottom: var(--spacing-lg);
+}
+
+.checkmark {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: var(--spacing-md);
+}
+
+.checkedIn p {
+    font-size: var(--font-size-lg);
+    color: var(--color-success);
+    font-weight: 500;
+}
+
+.checkInTime {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+}
+
+.notCheckedIn p {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-lg);
+}
+
+.checkInBtn {
+    font-size: var(--font-size-lg);
+    padding: var(--spacing-lg) var(--spacing-2xl);
+}
+
+.message {
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: rgba(74, 222, 128, 0.1);
+    border-radius: var(--radius-md);
+    color: var(--color-success);
+    font-weight: 500;
+    animation: slideUp 0.3s ease-out;
+}
+
+/* Streak Display */
+.streakDisplay {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md) var(--spacing-xl);
+    background: var(--gradient-warning);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--spacing-md);
+}
+
+.flameIcon {
+    color: #ff6b35;
+}
+
+.streakInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.streakNumber {
+    font-size: var(--font-size-2xl);
+    font-weight: 800;
+    color: #1a1a1a;
+    line-height: 1;
+}
+
+.streakLabel {
+    font-size: var(--font-size-xs);
+    color: #444;
+}
+
+.streakEmoji {
+    font-size: 1.5rem;
+}
+
+.streakMessage {
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+/* Stats Section */
+.statsSection {
+    margin-bottom: var(--spacing-xl);
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+}
+
+@media (max-width: 640px) {
+    .statsGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.statCard {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+}
+
+.statIcon {
+    width: 40px;
+    height: 40px;
+    padding: var(--spacing-sm);
+    background: var(--gradient-calm);
+    border-radius: var(--radius-md);
+    color: white;
+}
+
+.statContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.statValue {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.statLabel {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+}
+
+/* Calendar Section */
+.calendarSection {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+}
+
+.calendarSection h2 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.calendarGrid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+}
+
+@media (max-width: 480px) {
+    .calendarGrid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+.calendarDay {
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    position: relative;
+}
+
+.calendarDay.checked {
+    background: rgba(74, 222, 128, 0.15);
+    border-color: rgba(74, 222, 128, 0.3);
+    color: var(--color-success);
+}
+
+.calendarDay.today {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.3);
+}
+
+.dayNum {
+    font-weight: 500;
+}
+
+.dayCheck {
+    font-size: 0.6rem;
+    color: var(--color-success);
+}
+
+.calendarLegend {
+    display: flex;
+    gap: var(--spacing-lg);
+    justify-content: center;
+}
+
+.legendItem {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+}
+
+.legendDot {
+    width: 12px;
+    height: 12px;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+}
+
+.legendDot.checked {
+    background: rgba(74, 222, 128, 0.15);
+    border-color: rgba(74, 222, 128, 0.3);
+}
+
+.legendDot.today {
+    border-color: var(--color-primary);
+}
+
+/* Backfill Section */
+.backfillSection {
+    margin-bottom: var(--spacing-xl);
+}
+
+.backfillCard {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+}
+
+.backfillCard h3 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-primary);
+}
+
+.backfillCard p {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-lg);
+}
+
+.backfillForm {
+    display: flex;
+    gap: var(--spacing-md);
+    max-width: 400px;
+}
+
+@media (max-width: 480px) {
+    .backfillForm {
+        flex-direction: column;
+    }
+}
+
+.dateInput {
+    flex: 1;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.dateInput:focus {
+    border-color: var(--color-primary);
+}
+
+.backfillBtn {
+    white-space: nowrap;
+}

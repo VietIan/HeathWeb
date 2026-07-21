@@ -1,0 +1,240 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.container {
+    background: linear-gradient(180deg, #1A1612 0%, #2D2620 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-xl);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    position: relative;
+}
+
+.closeBtn {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: var(--text-secondary);
+    font-size: 20px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.closeBtn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--text-primary);
+}
+
+.title {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.subtitle {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-xl);
+}
+
+.breathingWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.breathingCircle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(74, 222, 128, 0.2) 0%, rgba(34, 197, 94, 0.1) 100%);
+    border: 3px solid rgba(74, 222, 128, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease-in-out;
+    box-shadow: 0 0 40px rgba(74, 222, 128, 0.2);
+}
+
+.breathingCircle.phase0 {
+    /* Hít vào - expand */
+    animation: breatheIn 4s ease-in-out;
+    transform: scale(1.3);
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.3) 0%, rgba(59, 130, 246, 0.2) 100%);
+    border-color: #60A5FA;
+    box-shadow: 0 0 60px rgba(96, 165, 250, 0.4);
+}
+
+.breathingCircle.phase1 {
+    /* Giữ */
+    transform: scale(1.3);
+    background: linear-gradient(135deg, rgba(167, 139, 250, 0.3) 0%, rgba(139, 92, 246, 0.2) 100%);
+    border-color: #A78BFA;
+    box-shadow: 0 0 60px rgba(167, 139, 250, 0.4);
+}
+
+.breathingCircle.phase2 {
+    /* Thở ra - contract */
+    animation: breatheOut 8s ease-in-out;
+    transform: scale(1);
+    background: linear-gradient(135deg, rgba(74, 222, 128, 0.3) 0%, rgba(34, 197, 94, 0.2) 100%);
+    border-color: #4ADE80;
+    box-shadow: 0 0 40px rgba(74, 222, 128, 0.3);
+}
+
+@keyframes breatheIn {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.3);
+    }
+}
+
+@keyframes breatheOut {
+    from {
+        transform: scale(1.3);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+.innerCircle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.startText {
+    font-size: var(--font-size-md);
+    color: var(--text-secondary);
+}
+
+.phaseName {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.timer {
+    font-size: 48px;
+    font-weight: 700;
+    color: white;
+}
+
+.completeText {
+    font-size: 64px;
+}
+
+.instruction {
+    margin-top: var(--spacing-lg);
+    font-size: var(--font-size-md);
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.progressBar {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: var(--spacing-sm);
+}
+
+.progressFill {
+    height: 100%;
+    background: linear-gradient(90deg, #4ADE80 0%, #22D3EE 100%);
+    transition: width 0.3s ease;
+}
+
+.cycleInfo {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-lg);
+}
+
+.controls {
+    margin-bottom: var(--spacing-lg);
+}
+
+.startBtn,
+.stopBtn,
+.doneBtn {
+    padding: var(--spacing-md) var(--spacing-xl);
+    border: none;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.startBtn {
+    background: linear-gradient(135deg, #4ADE80 0%, #22C55E 100%);
+    color: white;
+}
+
+.startBtn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba(74, 222, 128, 0.4);
+}
+
+.stopBtn {
+    background: rgba(248, 113, 113, 0.2);
+    border: 1px solid #F87171;
+    color: #F87171;
+}
+
+.stopBtn:hover {
+    background: rgba(248, 113, 113, 0.3);
+}
+
+.doneBtn {
+    background: linear-gradient(135deg, #4ADE80 0%, #22C55E 100%);
+    color: white;
+}
+
+.doneBtn:hover {
+    transform: scale(1.05);
+}
+
+.benefits {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+}

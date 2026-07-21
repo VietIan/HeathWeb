@@ -1,0 +1,607 @@
+.widget {
+    display: block;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    transition: all var(--transition-base);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.widget:hover {
+    background: var(--glass-bg-hover);
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.widgetHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-md);
+}
+
+.widgetTitle {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.widgetIcon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+}
+
+.widgetValue {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-primary);
+}
+
+.widgetSubtext {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+}
+
+.textMuted {
+    color: var(--text-muted);
+}
+
+.textSuccess {
+    color: var(--color-success);
+}
+
+/* Mood Widget */
+.moodEmoji {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+/* Task Widget */
+.taskIcon {
+    color: var(--color-success);
+}
+
+.progressContainer {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.progressBar {
+    flex: 1;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.progressFill {
+    height: 100%;
+    background: var(--gradient-success);
+    border-radius: var(--radius-full);
+    transition: width 0.5s ease;
+}
+
+.progressText {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-success);
+}
+
+/* Countdown Widget */
+.countdownNumber {
+    font-size: var(--font-size-lg);
+    background: var(--gradient-warning);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.taskTitle {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: var(--spacing-sm);
+}
+
+.urgentBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: rgba(248, 113, 113, 0.15);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    color: var(--color-error);
+}
+
+/* Attendance Widget */
+.checkmark,
+.pending {
+    font-size: 1.5rem;
+}
+
+.streakBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: rgba(251, 191, 36, 0.15);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    color: var(--color-warning);
+    font-weight: 500;
+}
+
+/* Quick Actions */
+.quickActionsSection {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+}
+
+.sectionTitle {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-primary);
+}
+
+.quickActionsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+}
+
+@media (max-width: 768px) {
+    .quickActionsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.quickAction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-lg);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    text-align: center;
+    transition: all var(--transition-base);
+}
+
+.quickAction:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+}
+
+.quickActionIcon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+}
+
+/* Event Countdown Widget */
+.countdownMain {
+    display: flex;
+    align-items: baseline;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.countdownMain .countdownNumber {
+    font-size: var(--font-size-4xl);
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+
+.countdownMain .countdownLabel {
+    font-size: var(--font-size-lg);
+    color: var(--text-secondary);
+}
+
+.countdownEvent {
+    font-size: var(--font-size-sm);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 500;
+}
+
+.weekendInfo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.weekendItem {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+}
+
+/* Work Timer Widget */
+.timerDisplay {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-md);
+}
+
+.timerValue {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    font-family: 'Courier New', monospace;
+    color: var(--color-success);
+}
+
+.timerValue.paused {
+    color: var(--color-warning);
+    animation: pulse 1.5s infinite;
+}
+
+.pausedLabel {
+    font-size: var(--font-size-xs);
+    color: var(--color-warning);
+    font-weight: 500;
+}
+
+.timerControls {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.timerBtn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border: none;
+}
+
+.pauseBtn {
+    background: rgba(251, 191, 36, 0.2);
+    color: var(--color-warning);
+}
+
+.pauseBtn:hover {
+    background: rgba(251, 191, 36, 0.3);
+}
+
+.resumeBtn {
+    background: rgba(74, 222, 128, 0.2);
+    color: var(--color-success);
+}
+
+.resumeBtn:hover {
+    background: rgba(74, 222, 128, 0.3);
+}
+
+.stopBtn {
+    background: rgba(248, 113, 113, 0.2);
+    color: var(--color-error);
+}
+
+.stopBtn:hover {
+    background: rgba(248, 113, 113, 0.3);
+}
+
+.autoEndNote {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-sm);
+}
+
+.completedTime {
+    color: var(--color-success);
+    font-weight: 700;
+}
+
+.workStats {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--glass-border);
+    margin-top: var(--spacing-sm);
+}
+
+/* Safe Day Widget */
+.safeDayWidget {
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.safeDayWidget:hover {
+    transform: translateY(-2px);
+}
+
+.safeDayActive {
+    background: rgba(167, 139, 250, 0.1);
+    border-color: rgba(167, 139, 250, 0.3);
+}
+
+.safeDayContent {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.safeDayToggle {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.toggleSwitch {
+    width: 48px;
+    height: 26px;
+    background: rgba(107, 114, 128, 0.3);
+    border-radius: var(--radius-full);
+    padding: 3px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.toggleSwitch.toggleOn {
+    background: linear-gradient(135deg, #A78BFA 0%, #818CF8 100%);
+}
+
+.toggleKnob {
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: var(--radius-full);
+    transition: transform var(--transition-fast);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toggleSwitch.toggleOn .toggleKnob {
+    transform: translateX(22px);
+}
+
+.safeDayStatus {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.safeDayMessage {
+    font-size: var(--font-size-sm);
+    color: #A78BFA;
+    font-style: italic;
+}
+
+.safeDayHint {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+}
+
+/* MVD Widget */
+.mvdWidget {
+    grid-column: span 2;
+}
+
+@media (max-width: 768px) {
+    .mvdWidget {
+        grid-column: span 1;
+    }
+}
+
+.mvdForm {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.mvdQuestion {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.mvdInput {
+    width: 100%;
+    padding: var(--spacing-md);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: var(--font-size-base);
+}
+
+.mvdInput:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+.mvdSubmitBtn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--gradient-primary);
+    border: none;
+    border-radius: var(--radius-md);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.mvdSubmitBtn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.mvdTaskContainer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.mvdTask {
+    padding: var(--spacing-md);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--color-primary);
+}
+
+.mvdTask.mvdCompleted {
+    border-left-color: var(--color-success);
+    background: rgba(74, 222, 128, 0.1);
+}
+
+.mvdTaskText {
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.mvdCompleted .mvdTaskText {
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+.mvdActions {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.mvdBtn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: all var(--transition-fast);
+}
+
+.mvdBtnPrimary {
+    background: var(--gradient-success);
+    color: white;
+}
+
+.mvdBtnDone {
+    background: rgba(74, 222, 128, 0.2);
+    color: var(--color-success);
+}
+
+.mvdBtnSecondary {
+    background: rgba(107, 114, 128, 0.2);
+    color: var(--text-secondary);
+}
+
+.mvdBtn:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+}
+
+.mvdSuccess {
+    font-size: var(--font-size-sm);
+    color: var(--color-success);
+    text-align: center;
+    padding: var(--spacing-sm);
+    background: rgba(74, 222, 128, 0.1);
+    border-radius: var(--radius-md);
+}
+
+.mvdStats {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--glass-border);
+    margin-top: var(--spacing-sm);
+}
+
+/* Debt Tracker Widget */
+.debtGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+}
+
+.debtItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: var(--spacing-sm);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.debtItem:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.debtItemPaid {
+    background: rgba(234, 179, 8, 0.1);
+    /* Yellow tint */
+    border-color: rgba(234, 179, 8, 0.3);
+}
+
+.debtLabel {
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.debtItemPaid .debtLabel {
+    color: #FACC15;
+}
+
+.debtCheckbox {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: #1a1a1a;
+    transition: all var(--transition-fast);
+}
+
+.debtItemPaid .debtCheckbox {
+    background: #FACC15;
+    border-color: #FACC15;
+}
