@@ -8,17 +8,17 @@ import MobileNav from '@/components/ui/MobileNav';
 import BrainDump from '@/components/quick/BrainDump';
 import EyeProtection from '@/components/wellness/EyeProtection';
 import { useRewards } from '@/lib/hooks/useRewards';
-import { db } from '@/lib/firebase/config';
-import { doc, updateDoc, arrayUnion, getDoc } from 'firebase/firestore';
+import { addPlannerInboxItem } from '@/lib/firebase/dailyPlanner';
 import styles from './dashboard.module.css';
 import { Loader2, Coins } from 'lucide-react';
 
 export default function DashboardLayout({ children }) {
     const { user, loading } = useAuth();
-    const { coins, addCoins } = useRewards();
+    const { coins } = useRewards();
     const router = useRouter();
 
     const [showBrainDump, setShowBrainDump] = useState(false);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [eyeProtectionEnabled, setEyeProtectionEnabled] = useState(true);
 
     // Keyboard shortcut for Brain Dump (Ctrl+Space)
@@ -39,13 +39,7 @@ export default function DashboardLayout({ children }) {
         if (!user) return;
 
         try {
-            const userRef = doc(db, 'users', user.uid);
-            await updateDoc(userRef, {
-                inbox: arrayUnion({
-                    ...item,
-                    addedAt: new Date().toISOString(),
-                }),
-            });
+            await addPlannerInboxItem(user.uid, item.text);
         } catch (error) {
             console.error('Error adding inbox item:', error);
         }
@@ -72,7 +66,11 @@ export default function DashboardLayout({ children }) {
 
     return (
         <div className={styles.dashboardWrapper}>
-            <Sidebar />
+            <Sidebar
+                isOpen={isSidebarOpen}
+                onOpen={() => setIsSidebarOpen(true)}
+                onClose={() => setIsSidebarOpen(false)}
+            />
 
             {/* Coin Display */}
             <div className={styles.coinDisplay}>
@@ -84,7 +82,7 @@ export default function DashboardLayout({ children }) {
                 {children}
             </main>
 
-            <MobileNav />
+            <MobileNav onCapture={() => setShowBrainDump(true)} />
 
             {/* Brain Dump Modal */}
             <BrainDump

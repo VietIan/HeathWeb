@@ -12,11 +12,13 @@ import {
 } from 'firebase/firestore';
 import { db } from '@/lib/firebase/config';
 import { useAuth } from '@/components/providers/AuthProvider';
+import { useWorkCalendar } from './useWorkCalendar';
 import { getTodayString } from '@/lib/utils/dateUtils';
-import { calculateStreak, getStreakMessage } from '@/lib/utils/streakUtils';
+import { getStreakMessage } from '@/lib/utils/streakUtils';
 
 export const useAttendance = () => {
     const { user } = useAuth();
+    const { overrides, calculateWorkdayStreak: computeWorkdayStreak } = useWorkCalendar();
     const [todayAttendance, setTodayAttendance] = useState(null);
     const [history, setHistory] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -213,7 +215,9 @@ export const useAttendance = () => {
     // Calculate totals
     const totalWorkHours = history.reduce((sum, h) => sum + (h.totalHours || 0), 0);
     const totalWorkDays = history.filter(h => h.checkedIn).length;
-    const streak = calculateStreak(history);
+    const checkedInDatesSet = new Set(history.filter(h => h.checkedIn).map(h => h.date));
+    const workdayStreakResult = computeWorkdayStreak(checkedInDatesSet, '2025-12-01');
+    const streak = workdayStreakResult.currentStreak;
     const streakInfo = getStreakMessage(streak);
     const hasCheckedInToday = !!todayAttendance?.checkedIn;
     const isWorking = hasCheckedInToday && !todayAttendance?.endTime;

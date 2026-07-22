@@ -1,0 +1,201 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.modal {
+    background: #1E293B;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 680px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    color: #F8FAFC;
+    padding: 1.5rem;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #38BDF8;
+}
+
+.subtitle {
+    margin: 0.2rem 0 0;
+    font-size: 0.85rem;
+    color: #94A3B8;
+}
+
+.closeBtn {
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    color: #94A3B8;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.uploadRow {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.fileUploadBtn {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38BDF8;
+    border: 1px dashed rgba(56, 189, 248, 0.4);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.orText {
+    font-size: 0.8rem;
+    color: #64748B;
+}
+
+.textArea {
+    width: 100%;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: #F8FAFC;
+    padding: 0.75rem;
+    font-size: 0.85rem;
+    font-family: monospace;
+    resize: vertical;
+    margin-bottom: 1rem;
+}
+
+.previewSection {
+    background: rgba(15, 23, 42, 0.6);
+    border-radius: 12px;
+    padding: 0.875rem;
+    margin-bottom: 1rem;
+}
+
+.previewStats {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.validTag {
+    color: #34D399;
+}
+
+.errorTag {
+    color: #F87171;
+}
+
+.tableWrapper {
+    max-height: 160px;
+    overflow-y: auto;
+}
+
+.previewTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+    text-align: left;
+}
+
+.previewTable th {
+    color: #64748B;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.4rem;
+}
+
+.previewTable td {
+    padding: 0.4rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.moreText {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #94A3B8;
+    margin-top: 0.5rem;
+}
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+}
+
+.cancelBtn {
+    background: rgba(255, 255, 255, 0.05);
+    color: #94A3B8;
+    border: none;
+    padding: 0.6rem 1.25rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.importBtn {
+    background: linear-gradient(135deg, #0EA5E9, #6366F1);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.25rem;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.summaryContainer {
+    text-align: center;
+    padding: 1.5rem 0;
+}
+
+.successBadge h4 {
+    margin: 0.5rem 0;
+    color: #F8FAFC;
+}
+
+.summaryStats {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 1.25rem 0;
+    font-size: 0.9rem;
+    color: #94A3B8;
+}
+
+.confirmBtn {
+    background: #10B981;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}

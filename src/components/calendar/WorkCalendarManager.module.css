@@ -1,0 +1,215 @@
+.container {
+    background: rgba(30, 41, 59, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.calendarHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.calendarHeader h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #38BDF8;
+}
+
+.subtitle {
+    margin: 0.2rem 0 0;
+    font-size: 0.8rem;
+    color: #94A3B8;
+}
+
+.monthNav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.navBtn {
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    color: #94A3B8;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.monthTitle {
+    font-weight: 700;
+    color: #F8FAFC;
+    font-size: 0.95rem;
+}
+
+.legendRow {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.75rem;
+    color: #CBD5E1;
+}
+
+.legendItem {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.workDot { background: #0EA5E9; }
+.offDot { background: #F59E0B; }
+.leaveDot { background: #A855F7; }
+.holidayDot { background: #EF4444; }
+
+.gridHeader {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #64748B;
+    margin-bottom: 0.5rem;
+}
+
+.gridBody {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.35rem;
+}
+
+.emptyCell {
+    height: 64px;
+}
+
+.cell {
+    height: 64px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 0.35rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: transform 0.15s, border-color 0.15s;
+}
+
+.cell:hover {
+    border-color: #38BDF8;
+    transform: scale(1.02);
+}
+
+.todayCell {
+    border-color: #10B981 !important;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+}
+
+.dayNum {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #F8FAFC;
+}
+
+.anchorBadge {
+    font-size: 0.6rem;
+    background: #F59E0B;
+    color: white;
+    padding: 0.05rem 0.2rem;
+    border-radius: 4px;
+    align-self: flex-start;
+}
+
+.statusText {
+    font-size: 0.65rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Status colors */
+.WORK_REGULAR .statusText, .WORK_SATURDAY .statusText, .OVERRIDE_WORK .statusText {
+    color: #38BDF8;
+}
+
+.OFF_SUNDAY .statusText, .OFF_SATURDAY .statusText, .OVERRIDE_OFF .statusText {
+    color: #FBBF24;
+}
+
+.LEAVE .statusText {
+    color: #C084FC;
+}
+
+.HOLIDAY .statusText {
+    color: #F87171;
+}
+
+.overrideOverlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(6px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overrideDialog {
+    background: #1E293B;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1.25rem;
+    width: 100%;
+    max-width: 380px;
+    color: #F8FAFC;
+    text-align: center;
+}
+
+.dialogSub {
+    font-size: 0.85rem;
+    color: #94A3B8;
+    margin: 0.2rem 0 1rem;
+}
+
+.dialogButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.dialogButtons button {
+    border: none;
+    padding: 0.6rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.workBtn { background: rgba(56, 189, 248, 0.2); color: #38BDF8; }
+.offBtn { background: rgba(245, 158, 11, 0.2); color: #FBBF24; }
+.leaveBtn { background: rgba(168, 85, 247, 0.2); color: #C084FC; }
+.holidayBtn { background: rgba(239, 68, 68, 0.2); color: #F87171; }
+.resetBtn { background: rgba(255, 255, 255, 0.05); color: #94A3B8; }
+
+.cancelBtn {
+    background: none;
+    border: none;
+    color: #64748B;
+    cursor: pointer;
+    font-size: 0.85rem;
+}

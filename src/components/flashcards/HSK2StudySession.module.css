@@ -1,0 +1,243 @@
+.container {
+    background: rgba(30, 41, 59, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 1.5rem;
+    max-width: 580px;
+    margin: 0 auto 2rem;
+}
+
+.emptySession {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    background: rgba(30, 41, 59, 0.7);
+    border-radius: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.emptySession h3 {
+    margin: 1rem 0 0.5rem;
+    color: #F8FAFC;
+}
+
+.emptySession p {
+    color: #94A3B8;
+    margin-bottom: 1.5rem;
+}
+
+.finishBtn {
+    background: #0EA5E9;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.headerBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.queueInfo {
+    font-size: 0.875rem;
+    color: #94A3B8;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.hskBadge {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38BDF8;
+    padding: 0.15rem 0.5rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.exitBtn {
+    background: none;
+    border: none;
+    color: #94A3B8;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.progressBar {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 3px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.progressFill {
+    height: 100%;
+    background: linear-gradient(90deg, #38BDF8, #818CF8);
+    transition: width 0.3s ease;
+}
+
+.flashcard {
+    min-height: 260px;
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    transition: transform 0.2s, border-color 0.2s;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+.flashcard:hover {
+    border-color: rgba(56, 189, 248, 0.4);
+}
+
+.speakerBtn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    color: #38BDF8;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.speakerBtn:hover {
+    background: rgba(56, 189, 248, 0.2);
+}
+
+.hanziLarge {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #F8FAFC;
+    margin-bottom: 0.5rem;
+}
+
+.flipHint {
+    font-size: 0.75rem;
+    color: #64748B;
+    margin: 0;
+}
+
+.pinyinText {
+    font-size: 1.5rem;
+    color: #38BDF8;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.hanVietText {
+    font-size: 1rem;
+    color: #A7F3D0;
+    margin-bottom: 0.5rem;
+}
+
+.meaningText {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #F8FAFC;
+    margin-bottom: 0.25rem;
+}
+
+.meaningEnText {
+    font-size: 0.875rem;
+    color: #94A3B8;
+    margin-bottom: 1rem;
+}
+
+.exampleBlock {
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid #38BDF8;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0 8px 8px 0;
+    text-align: left;
+    margin-top: 0.5rem;
+    width: 100%;
+}
+
+.exampleZh {
+    font-size: 0.9rem;
+    color: #E2E8F0;
+    margin: 0;
+}
+
+.exampleVi {
+    font-size: 0.8rem;
+    color: #94A3B8;
+    margin: 0.2rem 0 0;
+}
+
+.ratingActions {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+}
+
+.ratingBtn {
+    border: none;
+    padding: 0.625rem 0.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: transform 0.15s;
+}
+
+.ratingBtn:hover {
+    transform: translateY(-2px);
+}
+
+.againBtn {
+    background: rgba(239, 68, 68, 0.15);
+    color: #F87171;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.hardBtn {
+    background: rgba(245, 158, 11, 0.15);
+    color: #FBBF24;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.goodBtn {
+    background: rgba(16, 185, 129, 0.15);
+    color: #34D399;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.easyBtn {
+    background: rgba(14, 165, 233, 0.15);
+    color: #38BDF8;
+    border: 1px solid rgba(14, 165, 233, 0.3);
+}
+
+.ratingSub {
+    font-size: 0.65rem;
+    font-weight: 400;
+    opacity: 0.8;
+    margin-top: 0.2rem;
+}

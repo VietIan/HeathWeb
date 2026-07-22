@@ -11,10 +11,11 @@ import {
     getDocs,
     addDoc,
     serverTimestamp,
-    Timestamp
+    Timestamp,
+    writeBatch
 } from 'firebase/firestore';
-import { writeBatch } from 'firebase/firestore';
 import { db } from './config';
+import { getLocalDateKey } from '@/lib/utils/dateUtils';
 
 const ZALO_OTP_TTL_MINUTES = 10;
 
@@ -131,25 +132,25 @@ export const deleteJournal = async (userId, journalId) => {
 
 // ============ ATTENDANCE OPERATIONS ============
 export const checkIn = async (userId, date) => {
-    const attendanceRef = doc(db, 'users', userId, 'attendance', date);
+    const dateKey = date || getLocalDateKey(new Date());
+    const attendanceRef = doc(db, 'users', userId, 'attendance', dateKey);
     const attendanceSnap = await getDoc(attendanceRef);
 
     if (attendanceSnap.exists() && attendanceSnap.data().checkedIn) {
         return { success: false, message: 'Bạn đã check-in hôm nay rồi!', data: attendanceSnap.data() };
     }
 
-    // Calculate streak
-    const yesterday = new Date();
-    yesterday.setDate(yesterday.getDate() - 1);
-    const yesterdayStr = yesterday.toISOString().split('T')[0];
+    const now = new Date();
+    const yesterday = new Date(now.getTime() - 24 * 60 * 60 * 1000);
+    const yesterdayStr = getLocalDateKey(yesterday);
 
     const yesterdayRef = doc(db, 'users', userId, 'attendance', yesterdayStr);
     const yesterdaySnap = await getDoc(yesterdayRef);
 
-    const streak = yesterdaySnap.exists() ? (yesterdaySnap.data().streak || 0) + 1 : 1;
+    const streak = yesterdaySnap.exists() && yesterdaySnap.data()?.checkedIn ? (yesterdaySnap.data().streak || 0) + 1 : 1;
 
-    const now = new Date();
     await setDoc(attendanceRef, {
+        date: dateKey,
         checkedIn: true,
         checkInTime: serverTimestamp(),
         startTime: now.getTime(),
@@ -211,7 +212,6 @@ export const endWork = async (userId, date) => {
     const data = attendanceSnap.data();
     const endTime = Date.now();
 
-    // Calculate total hours (excluding paused time)
     let pausedTime = data.pausedTime || 0;
     if (data.isPaused && data.pauseStartTime) {
         pausedTime += endTime - data.pauseStartTime;
@@ -247,6 +247,103 @@ export const getAttendanceHistory = async (userId) => {
     return snapshot.docs.map(doc => ({ date: doc.id, ...doc.data() }));
 };
 
+export const auditAttendanceData = async (userId) => {
+    if (!userId) return null;
+    const attendanceRef = collection(db, 'users', userId, 'attendance');
+    const snapshot = await getDocs(attendanceRef);
+
+    const totalDocs = snapshot.docs.length;
+    let checkedInCount = 0;
+    const invalidDocIds = [];
+    const mismatchedDates = [];
+    const makeupCheckIns = [];
+    const validDatesSet = new Set();
+    const byYearMonth = {};
+
+    snapshot.docs.forEach(docSnap => {
+        const id = docSnap.id;
+        const data = docSnap.data();
+
+        const isValidId = /^\d{4}-\d{2}-\d{2}$/.test(id);
+        if (!isValidId) {
+            invalidDocIds.push({ id, data });
+        }
+
+        if (data.date && data.date !== id) {
+            mismatchedDates.push({ id, fieldDate: data.date, data });
+        }
+
+        if (data.isMakeup || data.isManual) {
+            makeupCheckIns.push({ id, data });
+        }
+
+        if (data.checkedIn) {
+            checkedInCount++;
+            validDatesSet.add(id);
+
+            const yearMonth = id.slice(0, 7);
+            if (yearMonth.length === 7) {
+                byYearMonth[yearMonth] = (byYearMonth[yearMonth] || 0) + 1;
+            }
+        }
+    });
+
+    const uniqueCheckedInCount = validDatesSet.size;
+    const sortedDates = Array.from(validDatesSet).sort();
+
+    let currentStreak = 0;
+    let longestStreak = 0;
+    let tempStreak = 0;
+
+    const todayStr = getLocalDateKey(new Date());
+
+    sortedDates.forEach((dStr, idx) => {
+        if (idx === 0) {
+            tempStreak = 1;
+        } else {
+            const prev = new Date(sortedDates[idx - 1]);
+            const curr = new Date(dStr);
+            const diffDays = Math.round((curr - prev) / (1000 * 60 * 60 * 24));
+            if (diffDays === 1) {
+                tempStreak++;
+            } else {
+                tempStreak = 1;
+            }
+        }
+        if (tempStreak > longestStreak) longestStreak = tempStreak;
+    });
+
+    const yesterdayObj = new Date();
+    yesterdayObj.setDate(yesterdayObj.getDate() - 1);
+
+    if (validDatesSet.has(todayStr) || validDatesSet.has(getLocalDateKey(yesterdayObj))) {
+        let checkDate = validDatesSet.has(todayStr) ? new Date() : yesterdayObj;
+        currentStreak = 0;
+        while (validDatesSet.has(getLocalDateKey(checkDate))) {
+            currentStreak++;
+            checkDate.setDate(checkDate.getDate() - 1);
+        }
+    }
+
+    const firstRecordedDate = sortedDates[0] || null;
+    const lastRecordedDate = sortedDates[sortedDates.length - 1] || null;
+
+    return {
+        totalDocs,
+        checkedInCount,
+        uniqueCheckedInCount,
+        firstRecordedDate,
+        lastRecordedDate,
+        invalidDocIds,
+        mismatchedDates,
+        makeupCheckIns,
+        byYearMonth,
+        currentStreak,
+        longestStreak,
+        discrepancy: totalDocs - uniqueCheckedInCount
+    };
+};
+
 // ============ EVENT/CALENDAR OPERATIONS ============
 export const addEvent = async (userId, eventData) => {
     const eventsRef = collection(db, 'users', userId, 'events');
@@ -267,7 +364,6 @@ export const deleteEvent = async (userId, eventId) => {
     const eventRef = doc(db, 'users', userId, 'events', eventId);
     await deleteDoc(eventRef);
 };
-
 
 // ============ SAFE DAY OPERATIONS ============
 export const setSafeDay = async (userId, date, isSafe) => {
@@ -315,13 +411,19 @@ export const completeMVD = async (userId, date, completed) => {
     await updateDoc(mvdRef, { completed });
 };
 
+export const getMVDHistory = async (userId) => {
+    const mvdRef = collection(db, 'users', userId, 'mvd');
+    const snapshot = await getDocs(mvdRef);
+    return snapshot.docs.map(doc => ({ date: doc.id, ...doc.data() }));
+};
+
 // ============ RADICALS OPERATIONS ============
 export const addRadicalsBatch = async (userId, radicalsList) => {
     const batch = writeBatch(db);
     const radicalsRef = collection(db, 'users', userId, 'radicals');
     
     radicalsList.forEach(radical => {
-        const newDocRef = doc(radicalsRef); // auto-generate ID
+        const newDocRef = doc(radicalsRef);
         batch.set(newDocRef, {
             ...radical,
             createdAt: serverTimestamp()
@@ -331,12 +433,6 @@ export const addRadicalsBatch = async (userId, radicalsList) => {
     await batch.commit();
 };
 
-export const getMVDHistory = async (userId) => {
-    const mvdRef = collection(db, 'users', userId, 'mvd');
-    const snapshot = await getDocs(mvdRef);
-    return snapshot.docs.map(doc => ({ date: doc.id, ...doc.data() }));
-};
-
 // ============ QUICK WORD OPERATIONS ============
 export const addQuickWord = async (userId, wordData) => {
     const quickRef = collection(db, 'users', userId, 'quickWords');
@@ -344,7 +440,7 @@ export const addQuickWord = async (userId, wordData) => {
         word: wordData.word,
         meaning: wordData.meaning || '',
         type: wordData.type || 'word',
-        date: wordData.date || new Date().toISOString().split('T')[0],
+        date: wordData.date || getLocalDateKey(new Date()),
         createdAt: serverTimestamp()
     });
 };

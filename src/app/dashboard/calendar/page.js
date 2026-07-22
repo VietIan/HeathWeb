@@ -6,6 +6,7 @@ import { getMonthDays, isSameDay, isToday, formatDate } from '@/lib/utils/dateUt
 import { solarToLunar, getSpecialLunarDate, getTietKhi } from '@/lib/utils/lunarCalendar';
 import { getCurrentHoliday, getUpcomingHolidays, isTetPeriod, TET_THEME } from '@/lib/utils/holidayThemes';
 import FestiveEffects from '@/components/effects/FestiveEffects';
+import WorkCalendarManager from '@/components/calendar/WorkCalendarManager';
 import { ChevronLeft, ChevronRight, Plus, X, Trash2, Moon } from 'lucide-react';
 import styles from './calendar.module.css';
 
@@ -116,7 +117,7 @@ export default function CalendarPage() {
             <header className={styles.pageHeader}>
                 <div>
                     <h1>Lịch {isTet && '🧧'}</h1>
-                    <p>Theo dõi các sự kiện và ngày quan trọng</p>
+                    <p>Theo dõi các sự kiện, lịch làm việc và ngày quan trọng</p>
                 </div>
                 <button
                     className={`${styles.lunarToggle} ${showLunar ? styles.lunarActive : ''}`}
@@ -126,6 +127,8 @@ export default function CalendarPage() {
                     Âm lịch
                 </button>
             </header>
+
+            <WorkCalendarManager />
 
             {/* Upcoming Holidays */}
             {upcomingHolidays.length > 0 && (

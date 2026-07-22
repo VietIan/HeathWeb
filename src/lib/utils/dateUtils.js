@@ -45,8 +45,21 @@ export const getUrgencyLevel = (deadline) => {
     return 'normal';
 };
 
+export const getLocalDateKey = (dateInput = new Date()) => {
+    if (!dateInput) return '';
+    const d = dateInput instanceof Date ? dateInput : new Date(dateInput);
+    if (isNaN(d.getTime())) return '';
+    const formatter = new Intl.DateTimeFormat('en-CA', {
+        timeZone: 'Asia/Ho_Chi_Minh',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+    });
+    return formatter.format(d);
+};
+
 export const getTodayString = () => {
-    return format(new Date(), 'yyyy-MM-dd');
+    return getLocalDateKey(new Date());
 };
 
 export const getMonthDays = (date) => {

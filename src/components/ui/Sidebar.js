@@ -11,6 +11,7 @@ import styles from './Sidebar.module.css';
 
 const navItems = [
     { href: '/dashboard', icon: 'home', label: 'Tổng quan', exact: true },
+    { href: '/dashboard/today', icon: 'calendar-check', label: 'Ngày của tôi' },
     { href: '/dashboard/tasks', icon: 'list-check', label: 'Công việc' },
     { href: '/dashboard/calendar', icon: 'calendar-days', label: 'Lịch' },
     { href: '/dashboard/mood', icon: 'face-smile', label: 'Tâm trạng' },
@@ -21,7 +22,7 @@ const navItems = [
     { href: '/dashboard/stats', icon: 'chart-line', label: 'Thống kê' },
 ];
 
-export default function Sidebar({ isOpen, onClose }) {
+export default function Sidebar({ isOpen, onClose, onOpen }) {
     const { user, userData } = useAuth();
     const pathname = usePathname();
     const navRef = useRef(null);
@@ -60,7 +61,7 @@ export default function Sidebar({ isOpen, onClose }) {
         <>
             {/* Mobile Header */}
             <div className={styles.mobileHeader}>
-                <button className={styles.menuBtn} onClick={() => onClose?.()}>
+                <button className={styles.menuBtn} onClick={onOpen} aria-label='Mở menu chính'>
                     <FontAwesomeIcon icon="bars" size="lg" />
                 </button>
                 <div className={styles.mobileLogo}>
@@ -92,6 +93,7 @@ export default function Sidebar({ isOpen, onClose }) {
                             href={item.href}
                             className={`${styles.navItem} ${isActive(item.href, item.exact) ? styles.navItemActive : ''}`}
                             onClick={onClose}
+                            aria-current={isActive(item.href, item.exact) ? 'page' : undefined}
                         >
                             <FontAwesomeIcon icon={item.icon} fixedWidth />
                             <span>{item.label}</span>
@@ -119,7 +121,7 @@ export default function Sidebar({ isOpen, onClose }) {
                             <span className={styles.userEmail}>{email}</span>
                         </div>
                     </div>
-                    <button className={styles.logoutBtn} onClick={handleLogout}>
+                    <button className={styles.logoutBtn} onClick={handleLogout} aria-label='Đăng xuất'>
                         <FontAwesomeIcon icon="right-from-bracket" />
                         <span>Đăng xuất</span>
                     </button>

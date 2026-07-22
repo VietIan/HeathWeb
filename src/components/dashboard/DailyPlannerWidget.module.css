@@ -1,0 +1,153 @@
+.plannerCard {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(220px, 1.25fr) minmax(300px, 1.5fr) minmax(190px, 1fr) auto;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.25rem;
+    margin-bottom: var(--spacing-lg);
+    overflow: hidden;
+    border: 1px solid rgba(255, 159, 90, 0.24);
+    border-radius: var(--radius-lg);
+    background:
+        radial-gradient(circle at 90% 20%, rgba(255, 184, 108, 0.17), transparent 28%),
+        linear-gradient(120deg, rgba(255, 122, 69, 0.13), rgba(255, 255, 255, 0.035));
+    box-shadow: 0 14px 38px rgba(0, 0, 0, 0.16);
+}
+
+.cardIntro h2 {
+    margin: 0.1rem 0;
+    font-size: 1.35rem;
+}
+
+.cardIntro p {
+    max-width: 330px;
+    color: var(--text-muted);
+    font-size: 0.76rem;
+}
+
+.kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--color-secondary);
+    font-size: 0.67rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(82px, 1fr));
+    gap: 0.5rem;
+}
+
+.metric {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 0.15rem 0.45rem;
+    padding: 0.65rem;
+    color: var(--color-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.12);
+}
+
+.metric strong {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+}
+
+.metric span {
+    grid-column: 1 / -1;
+    overflow: hidden;
+    color: var(--text-muted);
+    font-size: 0.64rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.metricWarning {
+    color: #F87171;
+    border-color: rgba(248, 113, 113, 0.18);
+}
+
+.nextAction {
+    min-width: 0;
+    padding-left: 1rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nextAction span {
+    display: block;
+    margin-bottom: 0.2rem;
+    color: var(--text-muted);
+    font-size: 0.67rem;
+}
+
+.nextAction strong {
+    display: block;
+    overflow: hidden;
+    font-size: 0.82rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.openButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    min-height: 42px;
+    padding: 0 0.9rem;
+    color: white;
+    border-radius: 11px;
+    background: var(--gradient-primary);
+    font-size: 0.73rem;
+    font-weight: 800;
+    white-space: nowrap;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.openButton:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 22px rgba(255, 122, 69, 0.24);
+}
+
+@media (max-width: 1260px) {
+    .plannerCard {
+        grid-template-columns: 1fr 1.4fr auto;
+    }
+
+    .nextAction {
+        display: none;
+    }
+}
+
+@media (max-width: 780px) {
+    .plannerCard {
+        grid-template-columns: 1fr;
+    }
+
+    .cardIntro p {
+        max-width: none;
+    }
+}
+
+@media (max-width: 420px) {
+    .metrics {
+        grid-template-columns: 1fr;
+    }
+
+    .metric {
+        grid-template-columns: auto auto 1fr;
+    }
+
+    .metric span {
+        grid-column: auto;
+    }
+}
+

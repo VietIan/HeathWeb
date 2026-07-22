@@ -2,11 +2,15 @@
 
 import { useState } from 'react';
 import { useAttendance } from '@/lib/hooks/useAttendance';
-import { formatDate } from '@/lib/utils/dateUtils';
-import { ClipboardCheck, Flame, Calendar, Trophy, Clock } from 'lucide-react';
+import { useAuth } from '@/components/providers/AuthProvider';
+import { formatDate, getLocalDateKey } from '@/lib/utils/dateUtils';
+import { auditAttendanceData } from '@/lib/firebase/firestore';
+import AttendanceAuditModal from '@/components/attendance/AttendanceAuditModal';
+import { ClipboardCheck, Flame, Calendar, Trophy, Clock, Search } from 'lucide-react';
 import styles from './attendance.module.css';
 
 export default function AttendancePage() {
+    const { user } = useAuth();
     const {
         todayAttendance,
         history,
@@ -21,6 +25,25 @@ export default function AttendancePage() {
     const [message, setMessage] = useState('');
     const [backfillDate, setBackfillDate] = useState('');
     const [backfilling, setBackfilling] = useState(false);
+
+    // Audit Modal State
+    const [showAudit, setShowAudit] = useState(false);
+    const [auditData, setAuditData] = useState(null);
+    const [auditLoading, setAuditLoading] = useState(false);
+
+    const handleOpenAudit = async () => {
+        if (!user?.uid) return;
+        setShowAudit(true);
+        setAuditLoading(true);
+        try {
+            const res = await auditAttendanceData(user.uid);
+            setAuditData(res);
+        } catch (err) {
+            console.error('Audit failed:', err);
+        } finally {
+            setAuditLoading(false);
+        }
+    };
 
     const handleCheckIn = async () => {
         setChecking(true);
@@ -53,7 +76,7 @@ export default function AttendancePage() {
     const last30Days = Array.from({ length: 30 }, (_, i) => {
         const date = new Date();
         date.setDate(date.getDate() - i);
-        return date.toISOString().split('T')[0];
+        return getLocalDateKey(date);
     }).reverse();
 
     const checkedDates = new Set(
@@ -76,6 +99,13 @@ export default function AttendancePage() {
                     <h1>Chấm công</h1>
                     <p>Theo dõi sự kiên định của bạn mỗi ngày</p>
                 </div>
+                <button
+                    className="btn btn-secondary"
+                    onClick={handleOpenAudit}
+                    style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(56, 189, 248, 0.15)', color: '#38BDF8', border: '1px solid rgba(56, 189, 248, 0.3)', borderRadius: '10px', padding: '0.6rem 1rem', cursor: 'pointer', fontWeight: 600 }}
+                >
+                    <Search size={16} /> Kiểm tra Dữ liệu (Audit)
+                </button>
             </header>
 
             <section className={styles.checkInSection}>
@@ -168,7 +198,7 @@ export default function AttendancePage() {
                             type="date"
                             value={backfillDate}
                             onChange={(e) => setBackfillDate(e.target.value)}
-                            max={new Date().toISOString().split('T')[0]}
+                            max={getLocalDateKey(new Date())}
                             className={styles.dateInput}
                             required
                         />
@@ -187,7 +217,7 @@ export default function AttendancePage() {
                 <h2>30 ngày gần đây</h2>
                 <div className={styles.calendarGrid}>
                     {last30Days.map((date) => {
-                        const isToday = date === new Date().toISOString().split('T')[0];
+                        const isToday = date === getLocalDateKey(new Date());
                         const isChecked = checkedDates.has(date);
 
                         return (
@@ -195,10 +225,8 @@ export default function AttendancePage() {
                                 key={date}
                                 className={`${styles.calendarDay} ${isChecked ? styles.checked : ''} ${isToday ? styles.today : ''}`}
                             >
-                                <span className={styles.dayNum}>
-                                    {formatDate(date, 'd')}
-                                </span>
-                                {isChecked && <span className={styles.dayCheck}>✓</span>}
+                                <span className={styles.dayDate}>{date.split('-')[2]}</span>
+                                <span className={styles.dayStatus}>{isChecked ? '✓' : ''}</span>
                             </div>
                         );
                     })}
@@ -214,6 +242,14 @@ export default function AttendancePage() {
                     </div>
                 </div>
             </section>
+
+            {showAudit && (
+                <AttendanceAuditModal
+                    auditData={auditData}
+                    loading={auditLoading}
+                    onClose={() => setShowAudit(false)}
+                />
+            )}
         </div>
     );
 }

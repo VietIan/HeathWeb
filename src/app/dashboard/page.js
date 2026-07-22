@@ -15,6 +15,7 @@ import SafeDayWidget from '@/components/dashboard/SafeDayWidget';
 import MVDWidget from '@/components/dashboard/MVDWidget';
 import DebtTrackerWidget from '@/components/dashboard/DebtTrackerWidget';
 import QuickActions from '@/components/dashboard/QuickActions';
+import DailyPlannerWidget from '@/components/dashboard/DailyPlannerWidget';
 import DailyTarot from '@/components/tarot/DailyTarot';
 import SoulPet from '@/components/pet/SoulPet';
 import styles from './dashboard.module.css';
@@ -53,6 +54,8 @@ export default function DashboardPage() {
                 <h1>{getGreeting()}, {displayName}! 👋</h1>
                 <p>Hãy cùng có một ngày làm việc hiệu quả nhé!</p>
             </header>
+
+            <DailyPlannerWidget tasks={tasks} events={events} />
 
             {/* Minimum Viable Day - Full Width */}
             <MVDWidget />

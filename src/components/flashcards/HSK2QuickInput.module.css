@@ -1,0 +1,167 @@
+.container {
+    background: rgba(30, 41, 59, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.modeHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.modeToggle {
+    display: flex;
+    gap: 0.5rem;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 0.25rem;
+    border-radius: 10px;
+}
+
+.modeBtn {
+    background: none;
+    border: none;
+    color: #94A3B8;
+    padding: 0.4rem 0.875rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.activeMode {
+    background: #0EA5E9 !important;
+    color: white !important;
+}
+
+.shortcutBadge {
+    font-size: 0.75rem;
+    color: #38BDF8;
+    background: rgba(56, 189, 248, 0.1);
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+}
+
+.fastInput {
+    width: 100%;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: #F8FAFC;
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    font-family: inherit;
+    resize: vertical;
+}
+
+.fastInput:focus {
+    outline: none;
+    border-color: #38BDF8;
+}
+
+.previewCard {
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 12px;
+    padding: 0.875rem 1rem;
+    margin-top: 0.75rem;
+}
+
+.previewTitle {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #38BDF8;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.previewGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: #CBD5E1;
+}
+
+.fullWidth {
+    grid-column: 1 / -1;
+}
+
+.label {
+    color: #64748B;
+    font-size: 0.75rem;
+}
+
+.hanziText {
+    color: #38BDF8;
+    font-size: 1.1rem;
+}
+
+.actionRow {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.saveBtn {
+    background: linear-gradient(135deg, #10B981, #059669);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.25rem;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: opacity 0.2s;
+}
+
+.saveBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.formGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+}
+
+.fullWidthGroup {
+    grid-column: 1 / -1;
+}
+
+.formGroup label, .fullWidthGroup label {
+    display: block;
+    font-size: 0.75rem;
+    color: #94A3B8;
+    margin-bottom: 0.25rem;
+}
+
+.required {
+    color: #EF4444;
+}
+
+.formGroup input, .fullWidthGroup input {
+    width: 100%;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #F8FAFC;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+}
+
+.formGroup input:focus, .fullWidthGroup input:focus {
+    outline: none;
+    border-color: #38BDF8;
+}

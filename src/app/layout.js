@@ -7,7 +7,6 @@ export const metadata = {
     description: 'Ứng dụng quản lý công việc kết hợp theo dõi cảm xúc và năng suất',
     keywords: ['productivity', 'emotional wellness', 'task management', 'mood tracker'],
     manifest: '/manifest.json',
-    themeColor: '#FF7A45',
     appleWebApp: {
         capable: true,
         statusBarStyle: 'default',
@@ -22,7 +21,6 @@ export const metadata = {
 export const viewport = {
     width: 'device-width',
     initialScale: 1,
-    maximumScale: 1,
     themeColor: '#FF7A45',
 };
 

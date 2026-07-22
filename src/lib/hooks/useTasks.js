@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import { serverTimestamp } from 'firebase/firestore';
 import { getTasks, addTask, updateTask, deleteTask } from '@/lib/firebase/firestore';
 import { useAuth } from '@/components/providers/AuthProvider';
 
@@ -34,22 +35,26 @@ export const useTasks = () => {
     }, [fetchTasks]);
 
     const createTask = async (taskData) => {
-        if (!user) return;
+        if (!user) return null;
         try {
-            await addTask(user.uid, taskData);
+            const taskRef = await addTask(user.uid, taskData);
             await fetchTasks();
+            return taskRef;
         } catch (err) {
             setError(err.message);
+            return null;
         }
     };
 
     const editTask = async (taskId, updates) => {
-        if (!user) return;
+        if (!user) return false;
         try {
             await updateTask(user.uid, taskId, updates);
             await fetchTasks();
+            return true;
         } catch (err) {
             setError(err.message);
+            return false;
         }
     };
 
@@ -66,8 +71,13 @@ export const useTasks = () => {
     const toggleComplete = async (taskId) => {
         const task = tasks.find(t => t.id === taskId);
         if (task) {
-            await editTask(taskId, { completed: !task.completed });
+            const completed = !task.completed;
+            return editTask(taskId, {
+                completed,
+                completedAt: completed ? serverTimestamp() : null,
+            });
         }
+        return false;
     };
 
     return {
@@ -76,6 +86,7 @@ export const useTasks = () => {
         error,
         createTask,
         editTask,
+        updateTask: editTask,
         removeTask,
         toggleComplete,
         refresh: fetchTasks
